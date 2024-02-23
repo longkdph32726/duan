@@ -1,0 +1,34 @@
+<h1>Đây là trang danh sách</h1>
+<a href="/admin/create">Thêm</a>
+<table border="1">
+ <thead>
+ <tr>
+ <th>ID</th>
+ <th>Danh mục</th>
+ <th>Chủ đề</th>
+ <th>Tên</th>
+ <th>Nội dung</th>
+ <th>Ảnh</th>
+ <th>Hành động</th>
+ </tr>
+ </thead>
+ <tbody>
+ <?php $__currentLoopData = $posts; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $item): $loop = $this->incrementLoopIndices();  ?>
+ <tr>
+ <td><?php echo \htmlentities($item['id']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($item['category_id']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($item['title']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($item['excerpt']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td><?php echo \htmlentities($item['content']??'', ENT_QUOTES, 'UTF-8', false); ?></td>
+ <td>
+ <img src="<?php echo \htmlentities($item['image']??'', ENT_QUOTES, 'UTF-8', false); ?>" width="50px" alt="">
+ </td>
+ <td>
+ <a href="/admin/<?php echo \htmlentities($item['id']??'', ENT_QUOTES, 'UTF-8', false); ?>/update">Sửa</a>
+ <a href="/admin/<?php echo \htmlentities($item['id']??'', ENT_QUOTES, 'UTF-8', false); ?>/delete" onclick="return confirm('Có chắc muốn xóa không!!!')">Xóa</a>
+ </td>
+ </tr>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </tbody>
+</table>
